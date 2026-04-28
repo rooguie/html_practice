@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+
+        ul>li{
+            display: inline;
+            margin-right: 50px;
+            font-size: 20px;
+        }
+
+        ul>li::after{
+            content:"/";
+            /* 해당 컨텐츠의 위치를 움직여줘야함. position 속성을 이용 */
+        }
+
+        ul>li:last-child::after{
+            content: "";
+        }
+
+        ul>li:not(:last-child)::after{
+            /* 마지막 요소만 빼고 after 달기 */
+            content: "/";
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>외투</li>
+        <li>상의</li>
+        <li>하의</li>
+        <li>악세서리</li>
+        <li>문의</li>
+    </ul>
+</body>
+</html>
