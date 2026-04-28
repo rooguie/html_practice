@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        width: 70%;
+        border-top: 2px solid rgb(10, 10, 121);
+        border-bottom: 2px solid rgb(10, 10, 121);
+        border-collapse: collapse;
+    }
+
+    table>thead>tr {
+        background-color: rgb(147, 55, 233);
+        border-bottom: 2px solid rgb(10, 10, 121);
+    }
+
+    table th,
+    td {
+        text-align: center;
+    }
+
+    table>tbody>tr:nth-child(even) {
+        background-color: rgb(211, 189, 233);
+    }
+
+    table>tbody>tr:hover {
+        background-color: rgb(105, 94, 116);
+        color: aliceblue;
+    }
+
+    table>tbody>tr {
+        border-top: 1px dashed black;
+    }
+    .w10{
+        /* 부모 table 전체의 70%=>10% */
+        width: 10%;
+    }
+
+    .w20{
+        /* 부모 table 전체의 70%=>10% */
+        width: 20%;
+    }
+
+    .w50{
+        /* 부모 table 전체의 70%=>10% */
+        width: 50%;
+    }
+
+</style>
+
+<body>
+
+    <table>
+
+        <thead>
+            <th >번호</th>
+            <th >제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="w10">1</td>
+                <td class="w50">게시글입니다.</td>
+                <td class="w20">홍길동</td>
+                <td class="w20">2025-10-16</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>게시글입니다.</td>
+                <td>홍길동</td>
+                <td>2025-10-16</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>게시글입니다.</td>
+                <td>홍길동</td>
+                <td>2025-10-16</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>게시글입니다.</td>
+                <td>홍길동</td>
+                <td>2025-10-16</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>게시글입니다.</td>
+                <td>홍길동</td>
+                <td>2025-10-16</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <table></table>
+
+</body>
+
+</html>
