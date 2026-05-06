@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "title-font";
+            src: url(../font/BM-fonts-package/ttf/BMEuljiro10yearslater.ttf);
+
+        }
+
+        @font-face {
+            font-family: "subtitle-font";
+            src: url(../font/BM-fonts-package/ttf/BMJUA_ttf.ttf);
+        }
+
+        @font-face {
+            font-family: "menutitle-font";
+            src: url(../font/BM-fonts-package/ttf/BMEULJIROTTF.ttf);
+        }
+
+        @keyframes move {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        body {
+            background-color: #2AC1BC;
+        }
+
+        .title-box>.title {
+            font-family: "title-font";
+            font-size: 50px;
+        }
+
+        .title-box>.subtitle {
+            font-family: "subtitle-font";
+        }
+
+        .menu-title {
+            font-family: "menutitle-font";
+            font-size: 20px;
+            margin-top: 20px;
+
+        }
+
+        .detail {
+            font-size: 12px;
+            margin-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .price {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .price>del {
+            margin-right: 5px;
+        }
+
+        .menu-box>a {
+            text-decoration: none;
+            font-size: 12px;
+            margin-top: 10px;
+            display: block;
+        }
+
+
+        .title-box {
+            margin: auto;
+            text-align: center;
+        }
+
+        .menu-box {
+            margin: auto;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 200px;
+            height: 300px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .menu-box>img {
+            width: 200px;
+            height: 150px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .logo {
+            color: black;
+            background-color: white;
+            text-align: center;
+            width: 60px;
+            height: 55px;
+            border-radius: 100%;
+            padding-top: 10px;
+            padding-left: 2px;
+            font-weight: 700;
+            position: fixed;
+
+            bottom: 30px;
+            right: 30px;
+
+            animation-name: move;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="title-box">
+        <h1 class="title">
+            배달의 민족
+        </h1>
+
+        <h2 class="subtitle">
+            넌 배달할 때가 제일 멋있어
+        </h2>
+    </div>
+
+
+    <div class="menu-box menu1">
+        <img src="../image/계란후라이.jpg" alt="">
+        <div class="menu-title">
+            계란후라이
+        </div>
+        <div class="detail">
+            먹기 아까운 귀요미 계란후라이
+        </div>
+        <div class="price">
+            5,000원
+        </div>
+        <a href="">
+            바로결제
+        </a>
+    </div>
+
+
+    <div class="menu-box menu2">
+        <img src="../image/떡국.jpg" alt="">
+        <div class="menu-title">
+            떡국
+        </div>
+        <div class="detail">
+            많이 먹으면 나이 많이 먹어요~
+        </div>
+        <div class="price">
+            12,000원
+        </div>
+        <a href="">
+            바로결제
+        </a>
+    </div>
+
+
+    <div class="menu-box menu3">
+        <img src="../image/초밥.jpg" alt="">
+        <div class="menu-title">
+            초밥
+        </div>
+        <div class="detail">
+            나 먹을꾸야?
+        </div>
+        <div class="price">
+            15,000원
+        </div>
+        <a href="">
+            바로결제
+        </a>
+    </div>
+
+
+    <div class="menu-box menu4">
+        <img src="../image/빵.jpg" alt="">
+        <div class="menu-title">
+            빵
+        </div>
+        <div class="detail">
+            다이어트는 내일부터
+        </div>
+        <div class="price">
+            8,000원
+        </div>
+        <a href="">
+            바로결제
+        </a>
+    </div>
+
+
+    <div class="menu-box menu5">
+        <img src="../image/커피.jpg" alt="">
+        <div class="menu-title">
+            커피
+        </div>
+        <div class="detail">
+            빵가는데 커피간다
+        </div>
+        <div class="price">
+            <del>
+                4,500원
+            </del>
+            3,000원
+        </div>
+        <a href="">
+            바로결제
+        </a>
+    </div>
+
+    <a href="">
+        <div class="logo">
+            <div>배민</div>
+            <div>오더</div>
+        </div>
+    </a>
+</body>
+
+</html>

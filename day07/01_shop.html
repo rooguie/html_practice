@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "title-font";
+            src: url(../font/DynaPuff/DynaPuff-VariableFont_wdth\,wght.ttf);
+        }
+
+        @font-face {
+            font-family: "list-font";
+            src: url(../font/Coiny/Coiny-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: "product-name";
+            src: url(../font/Stylish/Stylish-Regular.ttf);
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .home-logo {
+            font-family: "title-font";
+            font-size: 50px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .menu-box {
+            display: flex;
+            gap: 15px;
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 400px;
+            background-color: antiquewhite;
+            background-image: url(../image/bigPhoto.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            margin-top: 30px;
+
+        }
+
+        .list {
+            font-family: "list-font";
+            text-align: center;
+
+            font-size: 70px;
+
+            margin-top: 100px;
+
+        }
+
+        .product-img-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+
+            width: 1000px;
+
+            margin: 50px auto;
+
+            grid-auto-rows: 400px;
+
+            gap: 30px;
+
+
+        }
+
+        .product-img-box>.product>img {
+            width: 100%;
+            height: 300px;
+
+            flex-direction: column;
+
+            margin: auto;
+        }
+
+        .product-img-box>.product>img:hover {
+            transform: scale(1.1);
+        }
+
+        .product-img-box>.product>.name-price {
+            text-align: center;
+            margin-top: 10px;
+            font-family: "product-name";
+
+            font-size: 20px;
+        }
+
+        .sns>img{
+            width: 50px;
+            height: 50px;
+            margin: 0 30px;
+        }
+
+        .sns{
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="">
+            <div class="home-logo">
+                📱phone
+            </div>
+        </a>
+
+        <div class="menu-box">
+            <a href="">로그인</a>
+            <a href="">회원가입</a>
+            <a href="">고객센터</a>
+            <a href="">오시는 길</a>
+        </div>
+    </div>
+
+    <div class="main-img"></div>
+
+    <div class="list">product list</div>
+
+    <div class="product-img-box">
+
+        <div class="product">
+            <img src="../image/17pro.jpg" alt="">
+            <div class="name-price">아이폰17pro 180만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/15.jpg" alt="">
+            <div class="name-price">아이폰15 90만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/아이패드.jpg" alt="">
+            <div class="name-price">아이패드 120만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/s20.jpg" alt="">
+            <div class="name-price">갤럭시s20 90만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/s24 ultra.jpg" alt="">
+            <div class="name-price">갤럭시s24 울트라 190만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/s24 fe.jpg" alt="">
+            <div class="name-price">갤럭시s24 fe 90만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/애플워치.jpg" alt="">
+            <div class="name-price">애플워치 40만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/갤럭시탭.jpg" alt="">
+            <div class="name-price">갤럭시탭 190만원</div>
+        </div>
+
+        <div class="product">
+            <img src="../image/s24.jpg" alt="">
+            <div class="name-price">갤럭시s24 100만원</div>
+        </div>
+
+    </div>
+
+    <div class="sns">
+        <img src="../image/트위터.png" alt="">
+        <img src="../image/페이스북.png" alt="">
+        <img src="../image/인스타.png" alt="">
+    </div>
+</body>
+
+</html>

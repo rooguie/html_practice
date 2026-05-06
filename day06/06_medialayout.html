@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- min-width: 기본이 작은 것 점차 크게 레이아웃 변경 -->
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .header {
+            height: 60px;
+            background-color: grey;
+            font-weight: 700;
+            font-size: large;
+            box-sizing: border-box;
+            padding-left: 30px;
+            padding-top: 15px;
+            
+
+        }
+
+        .main-img {
+            height: 300px;
+            background-color: beige;
+            background-image: url(../image/화면\ 캡처\ 2026-04-30\ 142556.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .subject {
+            background-color: darkgray;
+            padding-top:15px ;
+            padding-left: 30px;
+            height: 400px;
+        }
+
+        .subject>.title{
+            font-weight: 700;
+            color: darkred;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .subject>.inner{
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .content {
+            height: 500px;
+            background-image:url(../image/spooky-silhouette-walks-through-foggy-forest-trail-generative-ai.jpg);
+            background-color: orange;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .sub {
+            height: 300px;
+            background-color: green;
+            background-image:url(../image/화면\ 캡처\ 2026-04-30\ 174334.png);
+            background-color: orange;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .footer {
+            height: 200px;
+            background-color: purple;
+            background-image:url(../image/화면\ 캡처\ 2026-04-30\ 174509.png);
+            background-color: orange;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media screen and (min-width:800px) {
+            .content {
+                height: 500px;
+                width: 50%;
+                float: left;
+            }
+
+            .sub {
+                height: 500px;
+                width: 50%;
+                float: right;
+            }
+
+            .footer {
+                height: 200px;
+                background-color: blueviolet;
+                clear: both;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .subject {
+                height: 800px;
+                width: 50%;
+                float: left;
+            }
+
+            .content {
+                height: 400px;
+                width: 50%;
+                float: right;
+            }
+
+            .sub {
+                height: 400px;
+                width: 50%;
+                float: right;
+            }
+
+            .footer {
+                height: 400px;
+                width: 100%;
+                clear: both;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">IN'O</div>
+    <div class="main-img"></div>
+    <div class="subject">
+        <div class="title">display</div>
+        <div class="inner">공포전시관</div>
+        <div class="value">이 전시관을 소개합니다</div>
+    </div>
+    <div class="content"></div>
+    <div class="sub"></div>
+    <div class="footer"></div>
+</body>
+
+</html>

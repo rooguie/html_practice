@@ -1,0 +1,71 @@
+@import url();
+@font-face {
+    font-family: ChironGoRoundTC-VariableFont_wght;
+    src: url(../font/민속박물관/ChironGoRoundTC-VariableFont_wght.ttf);
+}
+
+body{
+    font-family: ChironGoRoundTC-VariableFont_wght;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+li{
+    list-style: none;
+}
+
+.wrap{
+    width: 1400px;
+}
+
+.inner{
+    width: 1360px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.con-box{
+    padding: 120px 0;
+}
+
+.top>.inner{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.top>.inner>.left-box>li{
+    padding: 4px 12px;
+    
+    margin: auto;
+}
+
+.left-box{
+    display: flex;
+    font-size: 13px;
+}
+
+.right-box{
+    display: flex;
+    gap: 10px;
+
+    font-size: 13px;
+
+    padding: 4px 12px;
+}
+
+.right-box>.language{
+    display: flex;
+}
+
+.right-box>li>img{
+    width: 13px;
+    height: 13px;
+    margin-top: 3px;
+}
+
+
