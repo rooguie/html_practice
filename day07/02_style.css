@@ -1,71 +1,562 @@
-@import url();
+@import url(../day06/reset.css);
+
 @font-face {
-    font-family: ChironGoRoundTC-VariableFont_wght;
-    src: url(../font/민속박물관/ChironGoRoundTC-VariableFont_wght.ttf);
+    font-family: NotoSansKR-VariableFont_wght;
+    src: url(../font/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf);
 }
 
-body{
-    font-family: ChironGoRoundTC-VariableFont_wght;
+body {
+    font-family: NotoSansKR-VariableFont_wght;
     color: black;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
-
-li{
+li {
     list-style: none;
 }
 
-.wrap{
-    width: 1400px;
+a {
+    text-decoration: none;
 }
 
-.inner{
+.wrap {
+    min-width: 1400px;
+}
+
+/* inner : 1360px */
+.inner {
     width: 1360px;
     margin: auto;
     box-sizing: border-box;
 }
 
-.con-box{
+/* 전체 content-box padding 120px */
+.con-box {
     padding: 120px 0;
 }
 
-.top>.inner{
+/* header */
+header {
+    /* 메뉴 스티키 값 설정 */
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+}
+
+header .top,
+.menu {
+    border-bottom: 1px solid gray;
+    padding: 10px 0;
+}
+
+header .top a,
+.menu a {
+    color: gray;
+    font-weight: 500;
+    letter-spacing: -2px;
+}
+
+header .top a {
+    font-size: 13px;
+}
+
+header .inner {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
-
-.top>.inner>.left-box>li{
-    padding: 4px 12px;
-    
-    margin: auto;
-}
-
-.left-box{
+header .inner .top-left>ul,
+.top-right>ul {
     display: flex;
-    font-size: 13px;
 }
 
-.right-box{
+header .inner .top-left>ul>li,
+.top-right>ul>li {
+    margin: 10px;
+}
+
+header .inner .top-right img {
+    width: 12px;
+    margin-left: 5px;
+}
+
+header .menu .menu-left {
     display: flex;
+    align-items: center;
+}
+
+header .menu .menu-left img {
+    margin-right: 70px;
+}
+
+header .menu .menu-left ul {
+    display: flex;
+}
+
+header .menu .menu-left ul>li {
+    margin: 0 35px;
+}
+
+header .menu .menu-left ul>li>a {
+    font-size: 17px;
+    color: black;
+}
+
+header .menu .menu-right {
+    width: 100px;
+    height: 35px;
+    border: 1px solid rgb(0, 29, 0);
+    border-radius: 50px;
+    line-height: 35px;
+}
+
+#g {
+    color: rgb(0, 80, 0);
+}
+
+.after::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    left: 10px;
+    width: 1px;
+    height: 13px;
+    background-color: rgb(156, 156, 156);
+}
+
+/*main - slide */
+main>.slide {
+    width: 100%;
+    height: 532px;
+    background-image: url(../image/민속박물관/imgi_2_202509161994fd0d1ca60.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main>.slide .slide-main {
+    color: white;
+    padding-top: 60px;
+}
+
+main>.slide .slide-main1 {
+    font-size: 60px;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+main>.slide .slide-sub {
+    font-size: 30px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+main>.slide .sub1 {
+    margin-top: 30px;
+}
+
+/* time-right 270px * 80px */
+main>.slide .slide-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+main>.slide .slide-time>.slide-time-left {
+    width: calc(100% - 270px);
+    background-color: white;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+main>.slide .slide-time .time-left1 {
+    position: relative;
+}
+
+main>.slide .slide-time>.slide-time-left img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -5px;
+    left: -30px;
+}
+
+main>.slide .slide-time .time-left1 span {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 30px 0 10px;
+}
+
+main>.slide .slide-time ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+main>.slide .slide-time ul>li {
+    margin: 0 30px;
+}
+
+main>.slide .slide-time ul>li>span {
+    font-size: 18px;
+}
+
+main>.slide .slide-time ul>li>strong {
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 20px;
+}
+
+main>.slide .slide-time>.slide-time-right {
+    width: 270px;
+    height: 80px;
+    box-sizing: border-box;
+    background-color: rgb(0, 95, 0);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 80px;
+    position: relative;
+}
+
+main>.slide .slide-time>.slide-time-right>a {
+    color: white;
+}
+
+main>.slide .slide-time>.slide-time-right img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 25px;
+    /* 색상 반전 */
+    filter: invert(100%);
+}
+
+main>.slide .slide-time>.slide-time-right span {
+    padding-left: 40px;
+}
+
+
+main>.con1>.inner {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+main>.con1 .con-left-top {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 2px solid black;
+
+    margin: 0px 0px 32px;
+    padding: 0px 0px 16px;
+}
+
+main>.con1 .con-left-top>span {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+main>.con1 .con-left-top img {
+    width: 32px;
+    height: 32px;
+}
+
+main>.con1 .con-left-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+main>.con1 .con-left-bottom>.count1::after {
+    content: "|";
+    color: black;
+}
+
+main>.con1 .con-left-img img {
+    width: 336px;
+    height: 476px;
+}
+
+main>.con1 .con-right-img1>img {
+    width: 320px;
+    height: 200px;
+}
+
+main>.con1 .con-right-img2>img {
+    width: 320px;
+    height: 200px;
+}
+
+main>.con1 .con-right-top {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 2px solid black;
+
+    margin: 0px 0px 32px;
+    padding: 0px 0px 16px;
+}
+
+main>.con1 .con-right-top>span {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+main>.con1 .con-right-top img {
+    width: 32px;
+    height: 32px;
+}
+
+main>.con1 .con-right-img1 {
+    display: flex;
+    padding: 0px 0px 32px;
+
+    gap: 30px;
+
+    border-bottom: 2px solid lightgray;
+}
+
+main>.con1 .con-right-img2 {
+    display: flex;
+    padding: 0px 0px 32px;
+
+    gap: 30px;
+
+    border-bottom: 2px solid lightgray;
+}
+
+main>.con1 .con-right-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+main>.con1 .con-right-bottom>.count1::after {
+    content: "|";
+    color: black;
+}
+
+main>.con1 .con-right-img {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+main>.con1 .con-right-img .img1-nav,
+.img2-nav {
+    margin: 16px 0px 0px;
+}
+
+main>.con1 .con-right-img strong {
+    font-size: 22px;
+}
+
+main>.con1 .con-right-img span {
+
+    display: inline-block;
+    margin-top: 8px;
+}
+
+main>.con1 .con-right-img p {
+    margin: 16px 0px 0px;
+    color: gray;
+
+    font-size: 15px;
+}
+
+main>.con1 .con-right-img a {
+    display: inline-block;
+    margin-top: 24px;
+
+    text-align: center;
+
+    color: black;
+}
+
+main>.con1 .con-right-img a>img {
+    vertical-align: middle;
+}
+
+
+
+main>.con1 .count1 {
+    color: green;
+}
+
+main>.con1 .count2 {
+    margin-left: 4px;
+}
+
+/* con2 */
+
+.con2 {
+    background-image: url(../image/민속박물관/배경1.jpg);
+}
+
+main .con2 .con2-top {
+    text-align: center;
+
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.con2 ul {
+    display: flex;
+    justify-content: center;
+
+    padding: 0;
     gap: 10px;
 
-    font-size: 13px;
-
-    padding: 4px 12px;
 }
 
-.right-box>.language{
+.con2 ul li:first-child>a {
+    font-size: 20px;
+    font-weight: 800;
+    color: #005e3c;
+}
+
+.con2 ul li:nth-child(2) {
+    color: #99bfb1;
+}
+
+.con2 ul li:nth-child(3)>a {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666666;
+}
+
+main>.con2 img {
+    width: 318px;
+    height: 400px;
+}
+
+.con2-mid {
     display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    margin-top: 50px;
 }
 
-.right-box>li>img{
-    width: 13px;
-    height: 13px;
-    margin-top: 3px;
+.con2-mid :nth-child(1) a>.category {
+
+
+    color: white;
+    font-size: 14px;
+
+    width: 50px;
+    height: 30px;
+
+
+    box-sizing: border-box;
+
+    background-color: #1cb2a9;
+
+    text-align: center;
+    box-sizing: border-box;
+
+    padding-top: 5px;
+
+    margin-top: 10px;
 }
 
+.con2-mid :nth-child(2) a>.category {
 
+
+    color: white;
+    font-size: 14px;
+
+    width: 50px;
+    height: 30px;
+
+
+    box-sizing: border-box;
+
+    background-color: #1cb2a9;
+
+    text-align: center;
+    box-sizing: border-box;
+
+    padding-top: 5px;
+
+    margin-top: 10px;
+}
+
+.con2-mid :nth-child(3) a>.category {
+
+
+    color: white;
+    font-size: 14px;
+
+    width: 50px;
+    height: 30px;
+
+
+    box-sizing: border-box;
+
+    background-color: #358cdc;
+
+    text-align: center;
+    box-sizing: border-box;
+
+    padding-top: 5px;
+
+    margin-top: 10px;
+}
+
+.con2-mid :nth-child(4) a>.category {
+
+
+    color: white;
+    font-size: 14px;
+
+    width: 50px;
+    height: 30px;
+
+
+    box-sizing: border-box;
+
+    background-color: #358cdc;
+
+    text-align: center;
+    box-sizing: border-box;
+
+    padding-top: 5px;
+
+    margin-top: 10px;
+}
+
+.con2-mid p {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+
+    margin: 10px 0px 1px 0px;
+}
+
+.con2-mid a>span {
+    display: inline-block;
+    color: #666666;
+}
+
+.con2-bottom {
+    text-align: center;
+}
+
+.con2-bottom>button {
+    width: 173px;
+    height: 48px;
+    background: none;
+    border: 1px solid black;
+}
