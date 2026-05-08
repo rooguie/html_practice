@@ -554,9 +554,221 @@ main>.con2 img {
     text-align: center;
 }
 
-.con2-bottom>button {
+.con2-bottom button {
     width: 173px;
     height: 48px;
     background: none;
     border: 1px solid black;
+
+    font-weight: 600;
+    font-size: 15px;
+
+    margin-top: 100px;
+}
+
+.con3 {
+    background-image: url(../image/민속박물관/KakaoTalk_20260508_100814924_01.jpg);
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.con3>.inner {
+    position: relative;
+}
+
+.con3-bt1,
+.con3-bt2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.con3-bt1 {
+    left: 20px;
+}
+
+.con3-bt2 {
+    right: 20px;
+}
+
+
+.con3-top-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.con3-top-title :nth-child(1) {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.con3-top-title :nth-child(2) {
+    color: #666666;
+    font-size: 20px;
+    font-weight: 500;
+    display: inline-block;
+    margin: 16px 0 0;
+    letter-spacing: -1px;
+}
+
+.con3-main>.con3-main-left>img {
+    width: 240px;
+    height: 336px;
+}
+
+.con3 .con3-main {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+
+.con3 .con3-main>.con3-main-left {
+    background-image: url(../image/민속박물관/imgi_49_main_deco_bg_02-BHVkLLTU.png);
+
+
+
+    width: 428px;
+    height: 456px;
+
+    padding: 60px 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.con3 .con3-main>.con3-main-right {
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    padding: 60px 150px 0 80px;
+}
+
+
+.con4>.inner {
+    display: flex;
+    gap: 15px;
+}
+
+.con4 .img {
+    width: 656px;
+    height: 280px;
+
+    color: white;
+
+    box-shadow: inset 0 -100px 90px -20px rgba(0, 0, 0, 0.9);
+}
+
+.con4 .img1 {
+    background-image: url(../image/민속박물관/imgi_21_202509251997cfd11bb40.png);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.con4 .img2 {
+    background-image: url(../image/민속박물관/imgi_22_202509251997cfece7480.png);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.con4 .img>strong {
+    font-size: 28px;
+}
+
+
+.con4 .img>strong,
+.con4 .img>p {
+    position: relative;
+
+    top: 170px;
+    left: 40px;
+}
+
+.con5 .inner1 {
+    width: 50%;
+    background-color: #127b54;
+    height: 100px;
+}
+
+.con5 .inner1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 270px;
+    box-sizing: border-box;
+}
+
+.con5 .inner2 {
+    width: 50%;
+    height: 100px;
+    background-color: #005e3c;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 30px;
+}
+
+
+.con5 {
+    display: flex;
+    padding: 0;
+
+}
+
+.con5 a {
+    width: 100%;
+    color: black;
+}
+
+footer>.inner {
+    padding: 50px 0;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-actionMain {
+    position: relative;
+}
+
+.footer-actionSub {
+    display: flex;
+    gap: 15px;
+
+    position: absolute;
+    right: 0;
+
+    margin-top: 24px;
+}
+
+.footer-logo {
+    margin: 0 150px 0 0;
+    height: 100%;
+}
+
+.footer-bottom{
+    margin-top: 32px;
+}
+
+.sns{
+    display: flex;
+    gap: 10px;
 }
