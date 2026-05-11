@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="h1" id="h">자바스크립트의 변수 사용</h1>
+    <!-- 
+        변수: 값을 담고 있는 메모리 공간의 이름 / 할당
+        java => 자료형 변수명 = 값;
+        자바스크립트는 자료형이 없음.
+        변수명에 들어갈 수 있는 값의 제한이 없음.
+
+        자바스크립트에서 문자 표현 방식
+        "", '', ``(백틱) 사용가능. / 따옴표는 섞이면 안됨
+        html 내부 속성의 값을 표현할 때 => " "
+        "<h1 class="h1" id="h">자바스크립트의 변수 사용</h1>" => 불가능
+        '<h1 class="h1" id="h">자바스크립트의 변수 사용</h1>' => 가능
+        `<h1 class="h1" id="h">자바스크립트의 변수 사용</h1>` => 가능
+        혼용 역시 불가능
+
+        "", '' => 문자열 '값'+변수
+        ``=> 값, 변수   `값 $(변수)` => 값과 변수의 값을 같이 사용가능
+
+        변수 사용범위에 따라: var, let, const
+        -var: ES6 ver. 이후로 권장하지 않음.
+            중복선언이 가능. 재할당 가능
+            var name='hong';
+            var name='kim';
+
+        -let: 자바에서의 지역변수 개념
+            중복선언 불가능, 재할당은 가능
+
+
+        -const: 객체, 함수, 참조, 규칙 정의 시 사용(고정된 값을 사용할 떄)
+            중복선언, 재할당 불가능
+
+        변수의 사용범위(scope: 스코프):{ }
+        { }를 벗어나면 메모리에서 사라짐
+
+        호이스팅 import 처럼 변수나, 함수를 미리 선언
+        var name='hong'; => 값이랑 같이 호이스팅
+        let name1; => 변수 이름만 호이스팅
+    -->
+
+    <script>
+        //console.log(name1);
+        let name1 = 'lee';
+        console.log(name1);
+        name1 = 'hong'; // 재할당
+        console.log(name1);
+
+        // let name1= 'kim' => 중복선언 불가능
+
+        console.log(name); //선언한 적 없는 값
+
+        var name = 'hong'
+        console.log(name);
+        name = 'lee'; //재할당
+
+        var name = 'kim';
+        console.log(name);
+
+        const number = 123;
+        console.log(number);
+        // number=456; => 재할당 불가능
+        console.log(number);
+
+        let age;
+        console.log(age); //undefined
+        age = 20;
+        console.log(age);
+        // const age2; => 재할당이 불가능하기에 선언만 하는 것은 불가능
+
+        //변수 선언 시 camelCase 사용 / sql만 스네이크(_) 사용 underline_case
+        let myFirst = '123';
+        console.log(myFirst);
+        console.log("내가 선언한 변수==>", myFirst); // , => 한 칸 띄어쓰기
+        console.log("내가 선언한 변수==>" + myFirst); // + => 연결 연산자
+        console.log(`내가 선언한 변수=>${myFirst}`);
+
+        let firstName = 'kim';
+        let lastName = 'gil-dong';
+        age = 20;
+        //name: kim gil-dong / age:20
+
+        console.log("name:" + firstName + lastName + " / " + "age:" + age);
+        console.log(`name: ${firstName + lastName} / age:${age}`);
+        console.log("name:", firstName, lastName, "/", "age:", age);
+
+        //변수 let, const, var 없이 변수 사용이 가능
+        //선언 기호 없이 사용하게 되면 전역에 영향을 미치므로 가급적 사용X
+
+        mySecond = 10;
+        console.log(mySecond);
+
+
+        //상수: 한번 선언되면 변경할 수 없는 값
+        //java final 대문자표기= const 대문자표기
+
+        const MY_FINAL = "LG";
+        console.log(MY_FINAL);
+
+        //typeof: 변수의 타입을 확인
+        //typeof: 변수명
+        console.log(typeof (MY_FINAL));
+        console.log(typeof (mySecond));
+
+
+    </script>
+
+    <script src="01_script.js"></script>
+
+    <script>
+        // src 연결 이후에 사용이 가능함.
+        console.log(name3); //외부 스크립트 변수
+        console.log(myFirst); //내부 스크립트 변수
+    </script>
+
+</body>
+
+</html>
