@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>생년월일 확인</legend>
+        이름: <input type="text" id="name"> <br>
+        주민번호: <input type="text" id="rNum1">-<input type="text" id="rNum2"> <br>
+        <button onclick="result()">확인</button>
+        <!-- 이름, 생년월일, 나이, 성별, 출력 -->
+        <h3 id="printResult"></h3>
+    </fieldset>
+
+    <script>
+        const name = document.getElementById("name");
+        const rNum1 = document.getElementById("rNum1");
+        const rNum2 = document.getElementById("rNum2");
+
+
+
+        function result() {
+            let today = new Date();
+
+            let birthYear = rNum1.value.slice(0, 2);
+            let birthMonth = rNum1.value.slice(2, 4);
+            let birthDay = rNum1.value.slice(4, 7);
+            let gender = rNum2.value.charAt(0);
+
+            if(gender === '1' || gender ==='2'){
+                birthYear=Number(birthYear)+1900;
+            }
+
+            else{
+                birthYear=Number(birthYear)+2000;
+            }
+
+            let printResult = document.getElementById("printResult").innerText = `
+            이름: ${name.value}
+            생일: ${birthYear}년 ${birthMonth}월 ${birthDay}일
+            나이(만): ${Number(today.getFullYear()) - (birthYear)}
+            성별: ${gender === '1' || gender === '3' ? '남' : '여'}
+            `;
+
+            console.log(printResult);
+        }
+
+    </script>
+
+
+</body>
+
+</html>

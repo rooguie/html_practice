@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        이름, 국어, 영어, 수학점수를 입력받아 계산 버튼을 클릭하면
+        ul=>li 이름과 점수를 출력하고, 합계, 평균을 같이 출력
+        Number() : string -> 숫자로 변경될 수 있는 모든 값 / 정수+실수
+        pareInt() : 정수만 변경 가능
+    -->
+
+    <fieldset>
+        이름: <input type="text" id="name"> <br>
+        국어: <input type="text" id="kor"> <br>
+        영어: <input type="text" id="eng"> <br>
+        수학: <input type="text" id="math"> <br>
+        <button onclick="clickResult()">결과보기</button>
+    </fieldset>
+    <h1 id="inputResult"></h1>
+    <ul id="scoreResult"></ul>
+
+
+    <script>
+        const name = document.getElementById("name");
+        const kor = document.getElementById("kor");
+        const eng = document.getElementById("eng");
+        const math = document.getElementById("math");
+
+        function clickResult() {
+            let sum;
+            let avg;
+
+            sum = Number(kor.value) + Number(eng.value) + Number(math.value);
+
+            avg = sum / 3;
+
+            document.getElementById('inputResult').innerText=`
+            이름: ${name.value} 학생
+            국어: ${kor.value}점
+            영어: ${eng.value}점
+            수학: ${math.value}점
+            `
+
+            document.getElementById("scoreResult").innerHTML = `
+            <li>합계:${sum}</li>
+            <li>평균:${avg}</li>
+        `;
+        }
+    </script>
+</body>
+
+</html>
