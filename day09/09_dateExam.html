@@ -39,15 +39,14 @@
             else{
                 birthYear=Number(birthYear)+2000;
             }
-
-            let printResult = document.getElementById("printResult").innerText = `
+            //내부 함수 사용시에는 반드시 ()가 있어야함
+            document.getElementById("printResult").innerText = `
             이름: ${name.value}
             생일: ${birthYear}년 ${birthMonth}월 ${birthDay}일
-            나이(만): ${Number(today.getFullYear()) - (birthYear)}
+            나이(만): ${Number(today.getFullYear()) - (birthYear)} 
             성별: ${gender === '1' || gender === '3' ? '남' : '여'}
-            `;
-
-            console.log(printResult);
+            `
+        
         }
 
     </script>

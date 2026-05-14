@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뮤지션 프로필 카드</title>
+    <style>
+        /* 기본 레이아웃 설정 */
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            gap: 20px;
+        }
+
+        /* 카드 컨테이너 */
+        #result {
+            width: 340px;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* 초기 화면 스타일 */
+        .initial-view {
+            padding: 50px 20px;
+            text-align: center;
+            background: #222;
+            color: #fff;
+        }
+
+        .initial-view h2 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            font-weight: 900;
+        }
+
+        .initial-view p {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        /* 버튼 스타일 */
+        #btn {
+            background-color: #222;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #btn:hover {
+            transform: scale(1.05);
+            background-color: #000;
+        }
+
+        /* 상세 정보 화면 스타일 */
+        .detail-view {
+            padding: 30px;
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .info-box {
+            text-align: center;
+        }
+
+        .info-box .label {
+            display: block;
+            font-size: 0.65rem;
+            color: #999;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .info-box .value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        /* 플레이리스트 리스트 스타일 */
+        .playlist-header {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #444;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            transition: background 0.2s;
+        }
+
+        li:hover {
+            background: #f1f3f5;
+        }
+
+        li::after {
+            content: '🎧';
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="result">
+        <!-- 초기 로딩 시 보여줄 화면 -->
+        <div class="initial-view">
+            <h2>IU</h2>
+            <p>Musician Profile</p>
+        </div>
+    </div>
+
+    <button id="btn">더보기</button>
+
+    <script>
+        // 데이터 객체
+        const musician = {
+            name: "IU",
+            age: 20,
+            addr: "Seoul",
+            playlist: ['너랑나', '좋은날', '밤편지']
+        };
+
+        const btn = document.getElementById("btn");
+        const result = document.getElementById("result");
+
+        btn.addEventListener("click", () => {
+            // 상세 HTML 구조 생성
+            let html = `
+                <div class="detail-view">
+                    <div class="info-grid">
+                        <div class="info-box">
+                            <span class="label">NAME</span>
+                            <span class="value">${musician.name}</span>
+                        </div>
+                        <div class="info-box">
+                            <span class="label">AGE</span>
+                            <span class="value">${musician.age}</span>
+                        </div>
+                        <div class="info-box">
+                            <span class="label">CITY</span>
+                            <span class="value">${musician.addr}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="playlist-header">🎵 POPULAR TRACKS</div>
+                    <ul>
+            `;
+
+            musician.playlist.forEach(song => {
+                html += `<li>${song}</li>`;
+            });
+
+            html += `</ul></div>`;
+
+            // 화면 업데이트 및 버튼 숨기기
+            result.innerHTML = html;
+            btn.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>

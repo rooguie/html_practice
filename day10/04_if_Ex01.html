@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>오늘은??</h1>
+    <button id="btn">today</button>
+    <h1 id="result"></h1>
+    <!-- 오늘 날짜와 요일 출력 -->
+    <!-- 2026.05.13 (수) -->
+
+    <script>
+        document.getElementById('btn').addEventListener("click", datePrint);
+
+        function datePrint() {
+            let today = new Date();
+            let day;
+
+            if (today.getDay() == 1) {
+                day = '월'
+            }
+            else if (today.getDay() == 2) {
+                day = '화'
+            }
+            else if (today.getDay() == 3) {
+                day = '수'
+            }
+            else if (today.getDay() == 4) {
+                day = '목'
+            }
+            else if (today.getDay() == 5) {
+                day = '금'
+            }
+            else if (today.getDay() == 6) {
+                day = '토'
+            }
+            else {
+                day = '일'
+            }
+
+
+
+            document.getElementById("result").innerText = `
+            ${today.getFullYear()}. ${today.getMonth() + 1}. ${today.getDate()}. (${day})
+            `;
+        }
+
+    </script>
+</body>
+
+</html>

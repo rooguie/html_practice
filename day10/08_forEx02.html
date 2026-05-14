@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table td{
+            width: 100px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="dan">구구단 출력</button>
+
+    <div id="result"></div>
+
+
+
+    <script>
+        /*
+        콜백함수: 함수 안에서 다른 함수를 호출
+            -전달 인자(매개변수)로 다른 함수에 전달되는 함수
+            -콜백함수를 전달할 때, ()-> 괄호를 붙이지 않음, 그 이유는 함수 자체를 참조하여
+                다른 함수에게 전달하기 위해서이다.
+            -()를 붙이면 함수가 즉시 실행되어 버리지만, ()를 붙이지 않으면
+                함수 객체 자체가 매개변수로 전달되어 콜백 함수가 넘겨받은 함수가 원하는 시점에 직접 실행할 수 있게 된다. 
+
+            -()가 있을 때: 즉시 실행되어 그 반환값을 전달
+            -()가 없을 때: 함수 그 자체(함수객체)가 전달
+        */
+
+        document.getElementById("dan").addEventListener("click", () => {
+            let danNum = 2;
+            let incre = 1;
+            let str = '';
+
+            str += `<table>`
+            for (incre = 1; incre <= 9; incre++) {
+                str += `<tr>`;
+                for (danNum = 2; danNum <= 9; danNum++) {
+                    str += `<td>${danNum}X${incre}=${danNum * incre}</td>`;
+                }
+                str += `</tr>`;
+            }
+            str += `</table>`
+            document.getElementById("result").innerHTML = str;
+        })
+
+
+    </script>
+
+</body>
+
+</html>

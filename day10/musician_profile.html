@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>뮤지션 프로필 카드</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      background: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 2rem;
+    }
+
+    .card {
+      width: 340px;
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    .hero {
+      background: #1a1a1a;
+      padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #3C3489;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: #CECBF6;
+      margin-bottom: 1rem;
+      border: 2px solid #534AB7;
+    }
+
+    .hero-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero-name span {
+      font-size: 14px;
+      color: #888;
+      font-weight: 400;
+      margin-left: 6px;
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .genre-pill {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #3C3489;
+      color: #CECBF6;
+      font-size: 12px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .stat {
+      padding: 1rem 0;
+      text-align: center;
+      border-right: 1px solid #f0f0f0;
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-val {
+      display: block;
+      font-size: 17px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .stat-lbl {
+      display: block;
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .tracks {
+      padding: 1.25rem;
+    }
+
+    .tracks-label {
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+      border: 1px solid transparent;
+    }
+
+    .track:hover { background: #f8f8f8; }
+
+    .track.playing {
+      background: #f4f3ff;
+      border-color: #d0cefc;
+    }
+
+    .track-num {
+      font-size: 12px;
+      color: #bbb;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .track.playing .track-num { color: #7F77DD; }
+
+    .track-info { flex: 1; }
+
+    .track-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .track.playing .track-title { color: #534AB7; }
+
+    .track-artist {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .track-icon {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .track.playing .track-icon { color: #7F77DD; }
+
+    .more-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 13px;
+      color: #888;
+      border: none;
+      background: none;
+      border-top: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+
+    .more-btn:hover { background: #f8f8f8; color: #444; }
+
+    /* 숨겨진 상세 정보 패널 */
+    .extra-panel {
+      display: none;
+      padding: 0 1.25rem 1.25rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .extra-panel.open { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .extra-title {
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .tag-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #f4f3ff;
+      color: #534AB7;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .bio {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.7;
+      padding-top: 14px;
+      border-top: 1px solid #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="hero">
+      <div class="avatar">IU</div>
+      <div class="hero-name">IU <span>아이유</span></div>
+      <div class="hero-sub">Solo Artist · Seoul, Korea</div>
+      <span class="genre-pill">🎵 K-Pop · Ballad</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-val">26</span>
+        <span class="stat-lbl">나이</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val">2008</span>
+        <span class="stat-lbl">데뷔</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val">Seoul</span>
+        <span class="stat-lbl">도시</span>
+      </div>
+    </div>
+
+    <div class="tracks">
+      <div class="tracks-label">▶ 인기 트랙</div>
+
+      <div class="track playing" onclick="selectTrack(this, 0)">
+        <span class="track-num">▶</span>
+        <div class="track-info">
+          <div class="track-title">너랑나</div>
+          <div class="track-artist">꽃갈피 · 2014</div>
+        </div>
+        <span class="track-icon">〰</span>
+      </div>
+
+      <div class="track" onclick="selectTrack(this, 1)">
+        <span class="track-num">2</span>
+        <div class="track-info">
+          <div class="track-title">좋은날</div>
+          <div class="track-artist">Real · 2011</div>
+        </div>
+        <span class="track-icon">♪</span>
+      </div>
+
+      <div class="track" onclick="selectTrack(this, 2)">
+        <span class="track-num">3</span>
+        <div class="track-info">
+          <div class="track-title">밤편지</div>
+          <div class="track-artist">Palette · 2017</div>
+        </div>
+        <span class="track-icon">♪</span>
+      </div>
+    </div>
+
+    <div class="extra-panel" id="extra">
+      <div class="extra-title">장르 태그</div>
+      <div class="tag-wrap">
+        <span class="tag">K-Pop</span>
+        <span class="tag">발라드</span>
+        <span class="tag">인디</span>
+        <span class="tag">OST</span>
+      </div>
+      <p class="bio">
+        이지은(IU)은 2008년 데뷔한 대한민국의 싱어송라이터로,
+        따뜻한 목소리와 섬세한 감성의 가사로 사랑받고 있습니다.
+        배우로도 활발히 활동 중입니다.
+      </p>
+    </div>
+
+    <button class="more-btn" id="moreBtn" onclick="toggleExtra()">
+      더보기 ∨
+    </button>
+  </div>
+
+  <script>
+    const tracks = document.querySelectorAll('.track');
+
+    function selectTrack(el, idx) {
+      tracks.forEach((t, i) => {
+        t.classList.toggle('playing', i === idx);
+        const num = t.querySelector('.track-num');
+        const icon = t.querySelector('.track-icon');
+        if (i === idx) {
+          num.textContent = '▶';
+          icon.textContent = '〰';
+        } else {
+          num.textContent = i + 1;
+          icon.textContent = '♪';
+        }
+      });
+    }
+
+    function toggleExtra() {
+      const panel = document.getElementById('extra');
+      const btn = document.getElementById('moreBtn');
+      const isOpen = panel.classList.toggle('open');
+      btn.textContent = isOpen ? '접기 ∧' : '더보기 ∨';
+    }
+  </script>
+
+</body>
+</html>

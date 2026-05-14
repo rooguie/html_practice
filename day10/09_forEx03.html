@@ -1,0 +1,26 @@
+  const musician = {
+            name: "IU",
+            age: 20,
+            addr: "seoul",
+            playlist: ['너랑나', '좋은날', '밤편지']
+        }
+
+
+        let str = '';
+
+        for (let key in musician) {
+            if (key != 'playlist') {
+                str += `${key} : ${musician[key]} <br>`
+            }
+            if (key == 'playlist') {
+                for (let tmp of musician.playlist) {
+                    str += `<ul><li>${tmp}</li></ul>`;
+                }
+            }
+        }
+
+        document.getElementById("btn").addEventListener("click", printResult);
+
+        function printResult() {
+            document.getElementById("result").innerHTML = str;
+        }

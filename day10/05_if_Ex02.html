@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        fieldset {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        이름, 국어, 영어, 수학 점수를 입력받고 계산 버튼을 클릭하면
+        합계, 평균, 평균이 80점 이상이면 합격
+        국어, 영어, 수학 점수가 문자가 아니거나, 공백이거나 0~100 사이의 값이 아니라면 alert 창을 띄워 안내
+    -->
+
+    <fieldset>
+        <legend>성적표</legend>
+        이름: <input type="text" id="name"> <br>
+        국어: <input type="text" id="kor"> <br>
+        영어: <input type="text" id="eng">  <br>
+        수학: <input type="text" id="math"> <br>
+        <button id="btn">계산</button> <br>
+        합격여부: <span id="result"></span>
+    </fieldset>
+
+    <script>
+
+        document.getElementById("btn").addEventListener("click", check);
+
+
+        function check() {
+
+
+            const name = document.getElementById("name").value;
+            const kor = document.getElementById("kor").value;
+            const eng = document.getElementById("eng").value;
+            const math = document.getElementById("math").value;
+
+            let sum = Number(kor) + Number(eng) + Number(math);
+            let avg = sum / 3;
+            let printRsult = document.getElementById("result");
+
+            if (isNaN(kor) || isNaN(eng) || isNaN(math)) {
+                alert('잘못된 점수를 입력.');
+            }
+
+            else if (isBlank(kor)) {
+                alert("국어 점수를 입력해주세요");
+            }
+
+            else if (isBlank(eng)) {
+                alert("영어 점수를 입력해주세요");
+            }
+
+            else if (isBlank(math)) {
+                alert("수학 점수를 입력해주세요");
+            }
+
+            else if (!(Number(kor) >= 0 && Number(kor) <= 100 && Number(math) >= 0 && Number(math) <= 100 && Number(eng) >= 0 && Number(eng) <= 100)) {
+                alert("0~100점을 입력하세요.")
+            }
+
+            else if (avg >= 80) {
+                printRsult.innerText = `
+                총합:${sum}점
+                합격`;
+            }
+
+            else {
+                printRsult.innerText = `
+                총합:${sum}점
+                불합격`;
+            }
+        }
+
+        function isBlank(num) {
+            if (num.trim() === '') {
+                return true;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

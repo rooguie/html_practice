@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>조건문</h1>
+    <!-- 
+        if / switch: 자바와 동일한 문법 구조를 가지고 있음
+        if, if~else, esle if 전부 동일
+    -->
+
+    <fieldset>
+        숫자를 입력: <input type="text" id="number"> <br>
+        <button id="btn">판별</button>
+        <h1 id="result">홀수/짝수 판별</h1>
+    </fieldset>
+
+    <script>
+
+
+
+
+        document.getElementById("btn").addEventListener("click", printResult2)
+
+
+        function printResult2() {
+
+            const num = document.getElementById("number").value;
+            let printResult;
+            //NaN=> isNaN() 판별함수 => 숫자가 아니면 true
+            // if(num.trim()==='') => isBlank() 존재하지 않음
+
+            if (isNaN(num) || num.trim() === '') {
+                printResult = '숫자를 입력해주세요';
+            }
+
+            else if (Number(num) % 2 == 0) {
+                printResult = '짝수입니다.';
+            }
+
+            else if (Number(num) % 2 != 0) {
+                printResult = '홀수입니다.';
+            }
+
+
+
+            document.getElementById("result").innerText = printResult;
+        }
+
+    </script>
+</body>
+
+</html>
