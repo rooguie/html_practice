@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        가위 바위 보 게임을 10번 하여 승률을 출력
+    </h1>
+    <button type="button" id="btn">승률 출력하는 버튼</button>
+    <h3>
+        10번 중 승률은 <span id="result"></span>%입니다.
+    </h3>
+    <ol id="ol"></ol>
+    <h3 id="h3"></h3> <!--승리 몇번 패배 몇번-->
+    <script>
+        //가위바위보 게임
+        //com=random / player=random
+        //0=가위 1=바위 2=보
+        //승률 계산(승/(10-무))*100 소수 둘째자리까지 표현
+        //ol => com / play 누가 이겼는지에 대한 대결 기록 작성
+        //h3 => win: /draw: /lose: 
+
+        const rock = 1;
+        const sissors = 0;
+        const paper = 2;
+
+
+
+
+        document.getElementById("btn").addEventListener("click", game);
+
+
+
+        function game() {
+
+            //플레이어 기준
+            let winCount = 0;
+            let loseCount = 0;
+            let drawCount = 0;
+
+            let winRate = 0;
+
+            let str = '';
+
+            for (let i = 0; i < 10; i++) {
+                let computer = Math.round(Math.random() * 3);
+                let player = Math.round(Math.random() * 3);
+
+                if (player == 0) { //가위
+                    if (computer == 0) {
+                        str += `<ol>${i + 1}. player: 가위 / computer: 가위 => 무승부</ol>`;
+                        drawCount++;
+                    }
+
+                    else if (computer == 1) {
+                        str += `<ol>${i + 1}. player: 가위 / computer: 주먹 => 패배</ol>`;
+                        loseCount++;
+                    }
+
+                    else {
+                        str += `<ol>${i + 1}. player: 가위 / computer: 보 => 승리</ol>`;
+                        winCount++;
+                    }
+                }
+
+                else if (player == 1) { //주먹
+                    if (computer == 0) {
+                        str += `<ol>${i + 1}. player: 주먹 / computer: 가위 => 승리</ol>`;
+                        winCount++;
+                    }
+
+                    else if (computer == 1) {
+                        str += `<ol>${i + 1}. player: 주먹 / computer: 주먹 => 무승부</ol>`;
+                        drawCount++;
+                    }
+
+                    else {
+                        str += `<ol>${i + 1}. player: 주먹 / computer: 보 => 패배</ol>`;
+                        loseCount++;
+                    }
+                }
+
+                else { //보
+                    if (computer == 0) {
+                        str += `<ol>${i + 1}. player: 보 / computer: 가위 => 패배</ol>`;
+                        loseCount++;
+                    }
+
+                    else if (computer == 1) {
+                        str += `<ol>${i + 1}. player: 보 / computer: 주먹 => 승리</ol>`;
+                        winCount++;
+                    }
+
+                    else {
+                        str += `<ol>${i + 1}. player: 보 / computer: 보 => 무승부</ol>`;
+                        drawCount++;
+                    }
+                }
+
+            }
+
+            if (10 - drawCount > 0) {
+                winRate = (winCount / (10 - drawCount)) * 100;
+            }
+
+            document.getElementById("result").innerText = `${winRate.toFixed(2)}`;
+
+            document.getElementById("ol").innerHTML = str;
+
+            document.getElementById("h3").innerText =
+                `
+            win:${winCount} / draw:${drawCount} / lose:${loseCount}
+            `;
+        }
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

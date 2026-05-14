@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 카지노</title>
+    <style>
+        :root {
+            --win-color: #2ecc71;
+            --lose-color: #e74c3c;
+            --draw-color: #f1c40f;
+            --money-color: #f39c12;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .game-card {
+            background: #2d2d2d;
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+        }
+
+        .btn-reset {
+            position: absolute; top: 10px; right: 20px;
+            background: none; border-style: none; color: #888;
+            padding: 5px 12px; border-radius: 15px; cursor: pointer;
+        }
+
+        /* 자산 및 베팅 영역 */
+        .money-section {
+            background: #3d3d3d;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--money-color);
+        }
+
+        .balance { font-size: 1.5rem; font-weight: bold; color: var(--money-color); }
+
+        .betting-control {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            background: #1a1a1a; border: 1px solid #555; color: white;
+            padding: 8px; border-radius: 10px; width: 100px; text-align: center;
+        }
+
+        .score-board {
+            display: flex; justify-content: space-around;
+            font-size: 0.9rem; color: #aaa; margin-bottom: 1rem;
+        }
+
+        .display-area {
+            display: flex; justify-content: space-around; align-items: center; margin-bottom: 1.5rem;
+        }
+
+        .choice-view { font-size: 4rem; transition: transform 0.2s; }
+        .vs-badge { background: #444; padding: 5px 15px; border-radius: 50px; }
+
+        .control-panel {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 1.5rem;
+        }
+
+        .btn-choice {
+            background: #3d3d3d; border: 2px solid #444; border-radius: 15px;
+            padding: 15px; font-size: 2.5rem; cursor: pointer; transition: 0.2s;
+            width: 100px;
+        }
+
+        .btn-choice:hover { border-color: var(--money-color); transform: scale(1.05); }
+
+        #msg { font-size: 1.3rem; font-weight: bold; height: 1.5rem; margin-bottom: 1rem; }
+
+        .history-list {
+            list-style: none; padding: 0; max-height: 120px;
+            overflow-y: auto; border-top: 1px solid #444; font-size: 0.8rem;
+        }
+
+        .history-item {
+            padding: 8px; border-bottom: 1px solid #333;
+            display: flex; justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-card">
+    <button class="btn-reset" onclick="resetGame()">🔄 리셋</button>
+
+    <div class="money-section">
+        <div class="label" style="color: #aaa; font-size: 0.8rem;">내 자산</div>
+        <div class="balance">💰 <span id="balance">10,000</span>원</div>
+        <div class="betting-control">
+            <label for="bet-amount">판돈:</label>
+            <input type="number" id="bet-amount" value="1000" step="500" min="0">
+        </div>
+    </div>
+
+    <div class="score-board">
+        <span>승: <span id="win">0</span></span>
+        <span>무: <span id="draw">0</span></span>
+        <span>패: <span id="lose">0</span></span>
+    </div>
+
+    <div id="msg">베팅 후 선택하세요!</div>
+
+    <div class="display-area">
+        <div><div id="player-view" class="choice-view">❓</div></div>
+        <div class="vs-badge">VS</div>
+        <div><div id="com-view" class="choice-view">❓</div></div>
+    </div>
+
+    <div class="control-panel">
+        <button class="btn-choice" onclick="play(0)">✌️</button>
+        <button class="btn-choice" onclick="play(1)">✊</button>
+        <button class="btn-choice" onclick="play(2)">✋</button>
+    </div>
+
+    <ul id="history" class="history-list"></ul>
+</div>
+
+<script>
+    let balance = 10000;
+    let win = 0, draw = 0, lose = 0;
+    const icons = ['✌️', '✊', '✋'];
+
+    function play(player) {
+        const betInput = document.getElementById('bet-amount');
+        let betAmount = parseInt(betInput.value);
+
+        // 1. 베팅 유효성 검사
+        if (isNaN(betAmount) || betAmount <= 0) {
+            alert("판돈을 0원보다 크게 걸어주세요!");
+            return;
+        }
+        if (betAmount > balance) {
+            alert("잔액이 부족합니다!");
+            return;
+        }
+
+        const computer = Math.floor(Math.random() * 3);
+        document.getElementById('player-view').innerText = icons[player];
+        document.getElementById('com-view').innerText = icons[computer];
+
+        let result = "";
+        let color = "";
+        let moneyChange = 0;
+
+        // 2. 승패 판정 및 돈 계산
+        if (player === computer) {
+            result = "무승부 (판돈 반환)";
+            color = "var(--draw-color)";
+            draw++;
+            moneyChange = 0; // 변동 없음
+        } else if (
+            (player === 0 && computer === 2) || 
+            (player === 1 && computer === 0) || 
+            (player === 2 && computer === 1)
+        ) {
+            result = `승리! (+${betAmount}원)`;
+            color = "var(--win-color)";
+            win++;
+            moneyChange = betAmount; // 건 돈만큼 더 받음 (총 2배)
+        } else {
+            result = `패배... (-${betAmount}원)`;
+            color = "var(--lose-color)";
+            lose++;
+            moneyChange = -betAmount; // 건 돈 잃음
+        }
+
+        balance += moneyChange;
+        updateUI(result, color);
+        addHistory(player, computer, result, color);
+
+        // 자산이 0원이 되었을 때
+        if (balance <= 0) {
+            setTimeout(() => {
+                alert("파산하셨습니다! 게임을 초기화합니다.");
+                resetGame();
+            }, 500);
+        }
+    }
+
+    function updateUI(result, color) {
+        const msgEl = document.getElementById('msg');
+        msgEl.innerText = result;
+        msgEl.style.color = color;
+
+        document.getElementById('balance').innerText = balance.toLocaleString();
+        document.getElementById('win').innerText = win;
+        document.getElementById('draw').innerText = draw;
+        document.getElementById('lose').innerText = lose;
+    }
+
+    function addHistory(p, c, res, col) {
+        const historyEl = document.getElementById('history');
+        const li = document.createElement('li');
+        li.className = 'history-item';
+        li.innerHTML = `<span>${icons[p]} vs ${icons[c]}</span><span style="color:${col}">${res}</span>`;
+        historyEl.insertBefore(li, historyEl.firstChild);
+    }
+
+    function resetGame() {
+        balance = 10000;
+        win = 0; draw = 0; lose = 0;
+        updateUI("베팅 후 선택하세요!", "white");
+        document.getElementById('player-view').innerText = "❓";
+        document.getElementById('com-view').innerText = "❓";
+        document.getElementById('history').innerHTML = "";
+        document.getElementById('bet-amount').value = 1000;
+    }
+</script>
+
+</body>
+</html>

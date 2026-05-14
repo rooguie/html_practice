@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        null_coalescing 연산자: 널 병합 연산자 ES2020 버전부터 지원
+    </h1>
+
+    <!-- 
+        -null, undfined를 판단하여 해당 값의 대체값을 출력하는 연산자
+        -좌측항이 null이거나 undefined이면 우측값을 출력
+        => ??
+    -->
+
+    <script>
+        let n; //undefined
+        console.log(n ?? '우측항 출력');
+
+        let n2=null;
+        console.log(n2 ?? 'null 가능')
+
+        console.log('' ?? '빈문자 가능?'); //불가능
+        console.log(NaN ?? 'NaN은 가능??'); //불가능
+        console.log(0 ?? '0은 가능??'); //불가능
+
+
+
+    </script>
+</body>
+</html>

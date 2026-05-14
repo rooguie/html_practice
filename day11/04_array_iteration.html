@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>배열은 순환 구조(iteration)를 이용하여 특정 기능을 수행하는 메서드</h1>
+
+    <!-- 
+        java에서는 람다/스트림 이라는 이름으로 사용
+
+        -array.forEach(callback function):
+            일반 반복문과 유사한 형태
+        
+        -array.map(callback function):
+            forEach의 결과를 리턴하여 새로운 배열을 생성
+
+        -array.map(callback function):
+            forEach의 결과를 리턴하여 새로운 배열을 생성
+
+        -array.filter(callback function):
+            map 처럼 수행하면서 비교연산을 통해 true 값만 필터링 하여 리턴
+    -->
+
+    <script>
+        const numArray = [1, 2, 3, 4, 5, 6, 7, 5, 2];
+        const strArray = ['a', 'g', 'r', 'h', 'p', 'q', 's'];
+
+        for (let num of numArray) {
+            console.log(num);
+        }
+
+        console.log("-------------------");
+
+        for (let str of strArray) {
+            console.log(str);
+        }
+
+        console.log("--forEach(value, index, array)--");
+        numArray.forEach(function (v, i, a) {
+            console.log(v, i);
+        })
+
+        console.log('-------------------');
+
+        // numArray 값을 합계 => 콘솔에 출력
+
+        let sum=0;
+        numArray.forEach(function (v) {
+            sum += v;
+        })
+        console.log(sum);
+
+        function print(v) {
+            console.log(v);
+        }
+
+        console.log('-----------------')
+        //화살표 함수도 사용가능
+        strArray.forEach((v) => {
+            console.log(v);
+        })
+        
+        console.log("------------");
+        //파라미터가 1개라면 () 생략가능
+        //처리 구문도 1개라면 {} 생략가능
+        strArray.forEach(v => console.log(v));
+        console.log("------------------");
+
+        //map: 리턴이 가능
+        console.log("--map(value, index, array)--");
+        const newNumArr2 = numArray.map(function(v,i){
+            return `${i} => ${v}`;
+        })
+        console.log(newNumArr2);
+
+
+        //forEach는 값을 리턴 불가능
+        const newNumArr3=numArray.forEach(function (v){
+            return `${v}`;
+        })
+        console.log(newNumArr3); //undefined
+
+        //map을 이용하여 numArray v*2 값을 배열로 리턴 => 콘솔에 출력
+        const map2=numArray.map(function(v){
+            return v * 2;
+        })
+        console.log(map2);
+
+        //처리 구분이 return 하나면{} return 문구도 생략가능
+        const map3=numArray.map(v=> v*3);
+        console.log(map3);
+
+        numArray
+            .map(v=>v*5)
+            .forEach(n=>console.log(n));
+
+        //filter
+        console.log("--filter--");
+        //numArray 5이상의 값만 리턴
+        const map4=numArray.filter(function(v){
+            return v >= 5;
+        })
+        console.log(map4);
+
+        //filter 사용하여 홀수만 출력
+        console.log("홀수만")
+        const oddNum=numArray.filter(function(v){
+            return v % 2 != 0;
+        })
+        console.log(oddNum);
+
+        oddNum.forEach(function(v){
+            console.log(v);
+        })
+    </script>
+</body>
+
+</html>
