@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        set을 생성하고, 1~10까지 랜덤 수 5개를 채워서 출력 (중복x)
+
+
+    -->
+
+    <h1 id="result"></h1>
+    <script>
+        const set = new Set();
+        let str = '';
+
+        let result = document.getElementById("result");
+
+        while(set.size<5){
+            let num = Math.floor(Math.random()*10)+1;
+            set.add(num);
+            console.log(set);
+        }
+        
+        console.log(set.size);
+
+        //1. string
+        set.forEach(function (v) {
+            str += ` ${v}`;
+        })
+
+        result.innerText = str;
+
+
+        //2. 배열로 변환
+        // spread operator(스프레드 연산자, 전개구문, ...) => 얕은 복사
+        const arr = [...set];
+        console.log(arr);
+        result.innerText = arr;
+
+        //2_2 Array.form() 메서드 이용: 얕은 복사
+        //유사배열 객체나 이터러블한 객체를 얕은 복사하여 새로운 배열 객체로 생성
+        const arr2=Array.from(set);
+        console.log(arr2);
+
+        //깊은 복사
+        const arr3=[];
+        set.forEach(v=>{
+            arr3.push(v);
+        });
+        console.log(arr3);
+
+    </script>
+</body>
+
+</html>

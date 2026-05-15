@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <h1>set을 활용한 로또 만들기</h1>
+        <button id="makeRandom">랜덤번호 6자리 생성(출력)</button>
+        <h1 id="printNum">로또번호 출력</h1>
+
+        <button id="makeRandom2">당첨번호 7자리 생성(출력)</button>
+        <h1 id="printNum2">당첨번호 출력</h1>
+
+        <button id="ranking">당첨여부 확인</button>
+        <h3 id="printResult">당첨여부 출력</h3>
+    </fieldset>
+
+
+    <script>
+        const randomNum6 = new Set();
+        const randomNum7 = new Set();
+
+        let str1 = '';
+        let str2 = '';
+
+
+        //로또번호
+        while (randomNum6.size < 6) {
+            let randomNumber = Math.floor(Math.random() * 10 + 1);
+            randomNum6.add(randomNumber);
+        }
+
+        randomNum6.forEach((v) => {
+            str1 += ` ${v} `;
+        })
+
+        document.getElementById("makeRandom").addEventListener("click", () => {
+            document.getElementById("printNum").innerText = str1;
+        })
+
+
+        //당첨번호
+        while (randomNum7.size < 7) {
+            let randomNumber2 = Math.floor(Math.random() * 10 + 1);
+            randomNum7.add(randomNumber2);
+        }
+
+        randomNum7.forEach((v) => {
+            str2 += ` ${v} `;
+        })
+
+
+
+        document.getElementById("makeRandom2").addEventListener("click", () => {
+            document.getElementById("printNum2").innerText = str2;
+        })
+
+
+        //당첨여부
+        document.getElementById("ranking").addEventListener("click",check);
+
+
+        function check() {
+            const arr6 = [...randomNum6];
+            const arr7 = [...randomNum7];
+
+            let cnt = 0;
+            let bonus = 0;
+            let rank = 0;
+
+            let str='';
+
+            for (let i = 0; i < arr6.length; i++) {
+                for (let j = 0; j < arr7.length - 1; j++) {
+                    if (arr6[i] == arr7[j]) {
+                        cnt++;
+                    }
+                }
+            }
+
+            for (let i = 0; i < arr6.lengthl; i++) {
+                if (arr7[6] == arr6[i]) {
+                    bonus++;
+                }
+            }
+
+            if (cnt == 6) {
+                rank = 1;
+                str="축 1등";
+            }
+
+            else if (cnt == 5 || bonus == 1) {
+                rank = 2;
+                str="축 2등";
+            }
+
+            else if (cnt == 5 || bonus == 0) {
+                rank = 3;
+                str="축 3등";
+            }
+
+            else if (cnt == 4) {
+                rank = 4;
+                str="축 4등";
+            }
+
+            else if (cnt == 3) {
+                rank = 5;
+                str="축 5등";
+            }
+
+            else {
+                rank = 0;
+                str="꽝";
+            }
+
+            document.getElementById("printResult").innerText=str;
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

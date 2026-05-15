@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .result1{
+            color: green;
+        }
+
+        .result2{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        파일명: <input type="text" id="fileName">
+        <button id="btn">확인</button>
+        <h3 id="result"></h3>
+    </fieldset>
+
+    <script>
+        //input에 파일명.확장자 형태로 입력하여 확인버튼을 클릭하면
+        //이미지 파일인지 아닌지 검사
+        //이미지 파일면 '정상파일' = 초록
+        //아니면 '이미지파일만 가능합니다' = 빨강
+
+        // /\.(jpg|jpeg|gif|png|bmp)$/i
+
+        document.getElementById("btn").addEventListener("click",checkName);
+
+        function checkName(){
+            const fileName = document.getElementById("fileName").value;
+            let result=document.getElementById("result");
+
+            if(fileName.match(/^\.(jpg|jpeg|gif|png|bmp)$/i)){
+                document.getElementById("result").innerHTML
+                =`파일 이름을 입력해주세요.`
+            }
+
+            else if(fileName.match(/\.(jpg|jpeg|gif|png|bmp)$/i)){
+                result.innerHTML
+                =`<div class="result1">정상파일입니다.</div>`
+            }
+
+            else{
+                result.innerHTML
+                =`<div class="result2">이미지파일만 가능합니다.</div>`
+            }
+        }
+
+    </script>
+</body>
+</html>
